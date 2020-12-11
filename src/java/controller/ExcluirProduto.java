@@ -6,10 +6,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Produto;
 import model.ProdutoDAO;
 
-public class InserirProduto extends HttpServlet {
+public class ExcluirProduto extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -28,32 +27,19 @@ public class InserirProduto extends HttpServlet {
 	    out.println("<!DOCTYPE html>");
 	    out.println("<html>");
 	    out.println("<head>");
-	    out.println("<title>Servlet InserirProduto</title>");	    
+	    out.println("<title>Servlet ExcluirProduto</title>");	    
 	    out.println("</head>");
 	    out.println("<body>");
 	    
 	    try {
-		String nome = request.getParameter("nome");
-		String descricao = request.getParameter("descricao");
-		float estoqueAtual = Float.parseFloat(request.getParameter("estoque_atual"));
-		float estoqueMinimo = Float.parseFloat(request.getParameter("estoque_minimo"));
-		float valorUnitario = Float.parseFloat(request.getParameter("valor_unitario"));
+		int id = Integer.parseInt(request.getParameter("id"));		
+		ProdutoDAO produtoDAO = new ProdutoDAO();
+		produtoDAO.excluir(id);
 		
-		Produto produto = new Produto();
-		produto.setNome(nome);
-		produto.setDescricao(descricao);
-		produto.setEstoqueAtual(estoqueAtual);
-		produto.setEstoqueMinimo(estoqueMinimo);
-		produto.setValorUnitario(valorUnitario);
-		
-		ProdutoDAO dao = new ProdutoDAO();
-		dao.inserir(produto);		
-				
 		response.sendRedirect("listar_produto.jsp");
-	    }
-	    catch(Exception e) {
+	    } catch (Exception e) {
 		out.println("ERRO: " + e);
-	    }	    
+	    }
 	    
 	    out.println("</body>");
 	    out.println("</html>");
