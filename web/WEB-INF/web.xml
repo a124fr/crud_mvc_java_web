@@ -8,6 +8,10 @@
         <servlet-name>ExcluirProduto</servlet-name>
         <servlet-class>controller.ExcluirProduto</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AlterarProduto</servlet-name>
+        <servlet-class>controller.AlterarProduto</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InserirProduto</servlet-name>
         <url-pattern>/inserir_produto.do</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>ExcluirProduto</servlet-name>
         <url-pattern>/excluir_produto.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlterarProduto</servlet-name>
+        <url-pattern>/alterar_produto.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

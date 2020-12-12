@@ -20,7 +20,7 @@
 	<div>
 	    <label>
 		Descrição: <br/>
-		<input type="text" name="descricao" />
+		<textarea name="descricao"></textarea>
 	    </label>
 	</div>
 

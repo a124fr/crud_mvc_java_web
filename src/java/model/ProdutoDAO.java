@@ -8,7 +8,7 @@ public class ProdutoDAO extends DataBaseDAO {
     
     public Produto pesquisarPorId(int id) throws Exception {
 	Produto p = new Produto();
-	String sql = "SELECT * FROM Produto WHERE id = ?";
+	String sql = "SELECT * FROM Produto WHERE id_produto = ?";
 	this.conectar();
 	PreparedStatement ps = conn.prepareStatement(sql);
 	ps.setInt(1, id);
@@ -60,6 +60,21 @@ public class ProdutoDAO extends DataBaseDAO {
 	ps.setFloat(3, produto.getEstoqueAtual());
 	ps.setFloat(4, produto.getEstoqueMinimo());
 	ps.setFloat(5, produto.getValorUnitario());
+	ps.execute();
+	this.desconectar();
+    }
+    
+   public void alterar(Produto produto) throws Exception {
+	String sql = "UPDATE Produto SET nome = ?, descricao = ?, estoque_atual = ?, "
+		+ "estoque_min = ?, valor_unitario = ? WHERE id_produto = ?";
+	this.conectar();	
+	PreparedStatement ps = conn.prepareStatement(sql);
+	ps.setString(1, produto.getNome());
+	ps.setString(2, produto.getDescricao());
+	ps.setFloat(3, produto.getEstoqueAtual());
+	ps.setFloat(4, produto.getEstoqueMinimo());
+	ps.setFloat(5, produto.getValorUnitario());
+	ps.setInt(6, produto.getId());
 	ps.execute();
 	this.desconectar();
     }

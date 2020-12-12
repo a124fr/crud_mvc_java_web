@@ -62,7 +62,7 @@
 			<td><%=p.getEstoqueMinimo()%></td>
 			<td><%=p.getValorUnitario()%></td>
 			<td align="center">
-			    <a href="#" class="link">
+			    <a href="form_alterar_produto.jsp?id=<%=p.getId()%>" class="link">
 				<img src="assets/images/edit.png" alt="" border="0" />
 			    </a>
 			    <a href="#" onclick="excluir(<%=p.getId()%>, '<%=p.getNome()%>');" class="link">
